@@ -82,5 +82,11 @@ button:focus-visible {
 
 .node-test {
   border: yellow 1px solid;
+  width:50px;
+	height:50px;
+	background:#81C7D4;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;	/* 横幅&高さの1/2 */
   /* background-color: #fff; */
 }

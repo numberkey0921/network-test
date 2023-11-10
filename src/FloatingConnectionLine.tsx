@@ -11,7 +11,8 @@ interface FloatingConnectionLineProps {
   fromNode: Node;
 }
 
-const FloatingConnectionLine: React.Component<FloatingConnectionLineProps> = ({ toX, toY, fromPosition, toPosition, fromNode }) => {
+function FloatingConnectionLine({ toX, toY, fromNode }) {
+  console.log('FloatingConnectionLine');
   if (!fromNode) {
     return null;
   }
@@ -30,8 +31,6 @@ const FloatingConnectionLine: React.Component<FloatingConnectionLineProps> = ({ 
     targetX: toX,
     targetY: toY
   });
-
-  console.log(edgePath)
 
   return (
       <g>

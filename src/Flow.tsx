@@ -55,13 +55,12 @@ const simulationNodes = simulation.nodes();
 
 const updatedNodes: Node[] = initialNodes.map(node => {
   const simNode = simulationNodes.find(n => n.id === node.id);
-  
+
   return {
     ...node,
     position: { x: simNode?.x || 0, y: simNode?.y || 0 }
   };
 });
-console.log(updatedNodes, initialNodes, initialEdges);
 
 const fitViewOptions: FitViewOptions = {
   padding: 0.2,
@@ -102,28 +101,28 @@ function Flow() {
     [setEdges]
   );
   const onConnect: OnConnect = useCallback(
-    (connection) => setEdges((eds) => addEdge({ ...connection, type: 'floating', markerEnd: { type: MarkerType.Arrow } }, eds)),
+    (connection) => { console.log("connect"); setEdges((eds) => addEdge({ ...connection, type: 'floating', markerEnd: { type: MarkerType.Arrow } }, eds)) },
     [setEdges]
   );
-  
+
 
   return (
     <div className="floatingedges">
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      fitView
-      fitViewOptions={fitViewOptions}
-      defaultEdgeOptions={defaultEdgeOptions}
-      nodeTypes={nodeTypes}
-      edgeTypes={edgeTypes}
-      connectionLineComponent={FloatingConnectionLine}
-    >
-      <Background/>
-    </ReactFlow>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        fitView
+        fitViewOptions={fitViewOptions}
+        defaultEdgeOptions={defaultEdgeOptions}
+        nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
+        // connectionLineComponent={FloatingConnectionLine}
+      >
+        <Background />
+      </ReactFlow>
     </div>
   );
 }
